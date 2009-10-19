@@ -7,7 +7,7 @@ object TicTacToeGame {
     game.printWelcomeMessage
     
     val (rows, cols) = game.getBoardSize
-    val board = game.createBoard(rows, cols)
+    var board: Board = game.createBoard(rows, cols)
 
     val playerList = game.createHumanPlayer :: game.createComputerPlayer :: Nil
     
@@ -17,7 +17,7 @@ object TicTacToeGame {
       val current = playerList(player)
       game.alertNextPlayer(current)
       val (row, column) = current.move(board)
-      board(row, column) = current.character
+      board = board.newBoard(row, column, current.character)
       player = 1 - player 
     }
   }

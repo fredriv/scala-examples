@@ -1,7 +1,11 @@
 package scalaexamples.tictactoe.console
 
-class ConsoleBoard(rows: Int, cols: Int) extends Board(rows, cols) {
+class ConsoleBoard(board: Matrix[CellState]) extends Board(board) {
   
+  def createNewBoard(boardState: Matrix[CellState]) = new ConsoleBoard(boardState)
+  
+  def this(rows: Int, cols: Int) = this(Matrix[CellState](rows, cols, Empty))
+
   def this() = this(3,3)
   
   def showBoardState {
